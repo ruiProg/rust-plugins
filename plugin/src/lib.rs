@@ -15,7 +15,8 @@ impl Plugin for PluginImpl {
 }
 
 #[no_mangle]
-pub fn get_plugin() -> *mut dyn Plugin {
+#[allow(improper_ctypes_definitions)]
+extern "C" fn get_plugin() -> *mut dyn Plugin {
     println!("Running pluginImpl");
 
     // Return a raw pointer to an instance of our plugin
